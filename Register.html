@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    
+<style>
+
+    .container {
+        max-width: 370px;
+        margin: auto;
+        background: darkgray;
+        padding: 20px;
+        border-radius: 50px 5px 50px 5px;
+       
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input {
+        width: 350px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+    
+    button
+    {
+        height: 40px;
+        width: 300px;
+        margin-left: 40px;
+        border-radius: 25px;
+        background:rgb(58, 172, 181);
+    }
+
+    #p1
+    {
+        background-image: url(captcha1.jpg);
+        width: 120px;
+    }
+
+    </style>
+    <script>
+    
+function data()
+{
+    var a=document.getElementById("username").value;
+    var b=document.getElementById("email").value;
+    var c=document.getElementById("number").value;
+    var d=document.getElementById("password").value;
+    var e=document.getElementById("ppassword").value;
+    var f=document.getElementById("ppassword").value;
+
+    if(a==""||b==""||c==""||d==""||e==""||f=="")
+        {
+            alert("All Fields are mendatory");
+            return false;
+        }
+
+       else if(c.length<10||c.length>10)
+        {
+            alert("Number should be of 10 Digit ! Please enter valid Number");
+            return false;
+        }
+
+        else if(isNaN(c))
+        {
+            alert("Only Numbers are allowed ! Please enter valid Number");
+            return false;
+        }
+
+        else if(d!=e)
+        {
+            alert("Please enter same password");
+            return false;
+        }
+
+        else
+        {
+            true;
+        }
+}
+
+
+//Captcha Code Start  validation 
+
+function Random(min,max)
+        {
+            var a=Math.random();
+            var b=a*(max-min)+min;
+            b=parseInt(b);
+            return b;
+        }
+function Genrate()
+{
+    var a=Random(0,9);
+    var b=String.fromCharCode(Random(65,90));
+    var c=String.fromCharCode(Random(97,122));
+    var d=Random(0,9);
+    var e=String.fromCharCode(Random(97,122));
+    var f=String.fromCharCode(Random(65,90));
+    var code=a+b+c+d+e+f;
+    document.getElementById("p1").innerHTML=code;
+    document.getElementById("p1").style.fontStyle="italic";
+}
+function verify()
+{ 
+   var a= document.getElementById("p1").innerText;
+    //consol.log(a);
+    var b=document.getElementById("t1").value;
+    //console.log(b);
+    if(a==b)
+{
+    document.write("yes");
+}
+else
+    {
+        document.write("no")
+    }
+}    
+//Captcha Code end
+
+    </script>
+</head>
+<body onload="Genrate()">
+    <div class="container">
+        <h2>Registration Form</h2>
+
+        <form onsubmit="data()" action="abc.html">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+          
+
+            <label for="email">Email:</label>
+            <input type="email" id="email">
+           
+
+            <label for="number">Mo.Number:</label>
+            <input type="text" id="number">
+            
+
+            <label for="password">Password:</label>
+            <input type="password" id="password">
+         
+
+            <label for="password">Confirm Password:</label>
+            <input type="password" id="ppassword">
+        
+            <!--Captcha --> 
+
+           <h3>Captcha: </h3><input type="text" id="t1"/>
+           <h1 id="p1"></h1>
+           <button onclick="Genrate()">Refresh</button> 
+           <!-- //Captcha end -->
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
