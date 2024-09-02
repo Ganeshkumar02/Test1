@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,td
+        {
+            border: 5px solid black;
+            border-collapse:collapse;
+            text-align: center;
+            border-radius: 5px;
+            height: 80px;
+            width: 300px;
+            background-color: rgb(26,27,28);
+            border: none;
+
+        }
+
+        table tr td
+        {
+            border: 5px;
+        }
+        table
+        {
+            box-shadow: 0px 10px 12px 10px rgba(65,44,55,67);
+        
+        }
+        button
+        {
+            height: 60px;
+            width: 60px;
+            font-size: x-large;
+            background-color: gray;
+            border-radius: 50%;
+            border:none;
+        }
+        button:hover
+        {
+            box-shadow: 0px 0px 0px 4px rgb(66, 65, 65 );
+        }
+        .equal
+        {
+            background-color: orangered;
+        }
+        input
+        {
+            height: 50px;
+            width: 260px;
+            text-align: right;
+            border: none;
+            background-color: black;
+            font-size: xx-large;
+            color: white;
+         
+        }
+    </style>
+    <script>
+        function btnpress(x)
+        {
+           var a=document.getElementById("a1").value;
+           console.log(a);
+           if(a==0)
+           {
+            document.getElementById("a1").value="";
+            document.getElementById("a1").value=a+x;
+           }
+           else
+           {
+            document.getElementById("a1").value+=x;
+           }
+        }
+        function cleardata()
+        {
+            document.getElementById("a1").value="0";
+        }
+        function backpress()
+        {
+            document.getElementById("a1").value;
+            var len=a.length;
+             var b=a.substr(0,len-1);
+          document.getElementById("a1").value=b;
+        }
+
+        function Result()
+        {
+            var a=document.getElementById("a1").value;
+            var b= eval(a);
+            document.getElementById("a1").value=b;
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="4"><input type="text" id="a1"></td>
+        </tr>
+        <tr>
+            <td><button onclick="cleardata()">AC</button></td>
+            <td><button onclick="btnpress('%')">%</button></td>
+            <td><button onclick="backpress()">&bkarow;</button></td>
+            <td><button class="equal" onclick="btnpress('/')">/</button></td>
+        </tr>
+
+        <tr>
+            <td><button onclick="btnpress('7')">7</button></td>
+            <td><button onclick="btnpress('8')">8</button></td>
+            <td><button onclick="backpress('9')">9</button></td>
+            <td><button class="equal" onclick="btnpress('*')">x</button></td>
+        </tr>
+
+        <tr>
+            <td><button onclick="btnpress('4')">4</button></td>
+            <td><button onclick="btnpress('5')">5</button></td>
+            <td><button onclick="backpress('6')">6</button></td>
+            <td><button class="equal" onclick="btnpress()">-</button></td>
+        </tr>
+
+        <tr>
+            <td><button onclick="btnpress('1')">1</button></td>
+            <td><button onclick="btnpress('2')">2</button></td>
+            <td><button onclick="backpress('3')">3</button></td>
+            <td><button class="equal" onclick="btnpress()">+</button></td>
+        </tr>
+
+        <tr>
+            <td><button onclick="btnpress('0')">0</button></td>
+            <td><button onclick="btnpress('00')">00</button></td>
+            <td><button onclick="backpress('.')">.</button></td>
+            <td><button class="equal" onclick="Result()">=</button></td>
+        </tr>
+    </table>
+</body>
+</html>
